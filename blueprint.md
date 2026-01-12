@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a Next.js application with Firebase integration, featuring a dashboard with an AI chat assistant.
+This project is a Next.js application with Firebase integration, featuring a user dashboard.
 
 ## Style, Design, and Features
 
@@ -18,19 +18,13 @@ This project is a Next.js application with Firebase integration, featuring a das
         * A color palette in the sidebar allows users to change the application's background color.
     * Displays user information
     * Basic navigation sidebar
-    * AI chat functionality
-* **AI Chat:**
-    * User can send messages to an AI assistant.
-    * The AI assistant, powered by OpenAI, responds to user queries.
 
-## Current Task: Add Dynamic Background Color Changer
+## Current Task: Remove OpenAI Integration
 
-**Objective:** Add a dynamic background color changer to the dashboard.
+**Objective:** Remove all OpenAI-related code from the project.
 
 **Plan:**
 
-1.  **Read `src/app/dashboard/page.js`:** Get the current dashboard code.
-2.  **Add State for Background Color:** Create a state variable to hold the current background color.
-3.  **Create Color Palette:** Add a UI element in the sidebar to display a selection of colors.
-4.  **Implement Color Change Logic:** When a color is clicked, update the background color state, which will dynamically change the background of the application.
-5.  **Update `blueprint.md`:** Document the new dynamic background color feature.
+1.  **Delete `src/app/api/chat/route.js`:** Remove the file that handles OpenAI API requests.
+2.  **Modify `src/app/dashboard/page.js`:** Remove the AI chat section from the dashboard UI and all related state and logic.
+3.  **Update `blueprint.md`:** Remove any mention of the AI chat assistant.
