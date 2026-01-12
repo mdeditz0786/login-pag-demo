@@ -9,6 +9,7 @@ export default function Dashboard() {
   const router = useRouter();
   const [userEmail, setUserEmail] = useState('');
   const [bgColor, setBgColor] = useState('#f0f2f5'); // Default light gray
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const colorPalette = ['#f0f2f5', '#e0e7ff', '#fef3c7', '#fecaca', '#d1fae5'];
 
@@ -31,7 +32,7 @@ export default function Dashboard() {
   return (
     <div style={{ backgroundColor: bgColor }} className="min-h-screen flex text-gray-800 transition-colors duration-500">
       {/* Sidebar */}
-      <aside className="w-64 bg-white p-6 shadow-md">
+      <aside className={`bg-white p-6 shadow-md w-64 fixed inset-y-0 left-0 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition-transform duration-300 ease-in-out z-30`}>
         <h1 className="text-3xl font-bold mb-8 text-gray-900">Dashboard</h1>
         <nav>
           <ul>
@@ -58,18 +59,21 @@ export default function Dashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-10">
+      <main className="flex-1 p-6 md:p-10 transition-all duration-300">
         {/* Header */}
         <header className="flex justify-between items-center mb-10">
-          <div>
-            <h2 className="text-4xl font-bold text-gray-900">
+            <button className="md:hidden" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+          <div className='text-center md:text-left'>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
               Welcome, {userEmail || 'User'} 👋
             </h2>
             <p className="text-gray-500">Your personal dashboard</p>
           </div>
           <button
             onClick={logout}
-            className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg shadow-md transition-all duration-300"
+            className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 md:px-5 md:py-2 rounded-lg shadow-md transition-all duration-300 text-sm md:text-base"
           >
             Logout
           </button>
