@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",       // 🔹 Root folder ko base banaya
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]    // 🔹 src folder alias
     }
   }
 }
